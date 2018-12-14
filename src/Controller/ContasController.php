@@ -17,7 +17,7 @@ class ContasController extends AbstractController
 		
 		$result = $contasService->create($data);
 		if ($result instanceof Contas) {
-			return $this->json(['id' => $result->getId()]);
+			return $this->json(['id' => $result->getId()], 201);
 		} else if ($result instanceof ValidatorInterface) {
 			return $this->json($result->getErrors(), 400);
 		} else {
@@ -27,19 +27,18 @@ class ContasController extends AbstractController
 		
 	}
 	
-	private function basicValidationCreate(Request $request)
+	public function list(ContasService $contasService)
 	{
-		$request->request->get('mes_compra');
-		
+		$contas = $contasService->getList();
+		return $this->json($contas);
 	}
 	
-	public function list()
+	public function getOne($id, ContasService $contasService)
 	{
-		return $this->json([]);
-	}
-	
-	public function get($id)
-	{
-		return $this->json(['id' => $id]);
+		$conta = $contasService->get($id);
+		if (!$conta) {
+			return $this->json('',404);
+		}
+		return $this->json($conta);
 	}
 }

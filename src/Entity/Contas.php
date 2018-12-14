@@ -248,4 +248,20 @@ class Contas
 		}
 		return $valorParcela;
 	}
+	
+	public function toArray()
+	{
+		return [
+			'id' => $this->getId(),
+			'tipo' => $this->getTipo(),
+			'descricao' => $this->getDescricao(),
+			'valor' => $this->getValor(),
+			'responsavel' => $this->getResponsavel(),
+			'meio_pagamento' => $this->getMeioPagamento(),
+			'data_compra' => $this->getDataCompra(),
+			'mes_fatura' => $this->getMesFatura(),
+			'numero_parcelas' => $this->getNumeroParcelas(),
+			'data_fim' => $this->getDataFim(),
+		];
+	}
 }

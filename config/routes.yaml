@@ -11,5 +11,5 @@ contas-list:
     methods: ['GET']
 contas-get:
     path: /contas/{id}
-    controller: App\Controller\ContasController::get
+    controller: App\Controller\ContasController::getOne
     methods: ['GET']

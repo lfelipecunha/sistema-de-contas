@@ -62,4 +62,20 @@ class Contas
 		
 		return $validator;
 	}
+	
+	public function getList()
+	{
+		$contas = $this->entityManager->getRepository(Entity\Contas::class)->findAll();
+		$contasArray = [];
+		foreach ($contas as $conta) {
+			$contasArray[] = $conta->toArray();
+		}
+		return $contasArray;
+	}
+	
+	public function get($id)
+	{
+		$conta = $this->entityManager->getRepository(Entity\Contas::class)->find($id);
+		return $conta ? $conta->toArray() : null;
+	}
 }
