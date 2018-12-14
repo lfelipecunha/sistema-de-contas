@@ -5,7 +5,7 @@ version: "3.1"
 services:
 
     mysql:
-      image: mysql:8.0
+      image: mysql:5.7
       container_name: sistema-de-contas-mysql
       working_dir: /application
       volumes:
@@ -33,7 +33,7 @@ services:
       container_name: sistema-de-contas-php-fpm
       working_dir: /application
       environment:
-          XDEBUG_CONFIG: "remote_host=192.168.17.76 remote_port=9001 profiler_enable_trigger=1 output_buffering=0"
+          XDEBUG_CONFIG: "remote_host=10.1.1.44 remote_port=9000 profiler_enable_trigger=1 output_buffering=0"
       volumes:
         - .:/application
         - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini

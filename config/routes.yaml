@@ -1,3 +1,15 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+contas-create:
+    path: /contas
+    controller: App\Controller\ContasController::create
+    methods: ['POST']
+contas-list:
+    path: /contas
+    controller: App\Controller\ContasController::list
+    methods: ['GET']
+contas-get:
+    path: /contas/{id}
+    controller: App\Controller\ContasController::get
+    methods: ['GET']
